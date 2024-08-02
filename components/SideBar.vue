@@ -26,6 +26,7 @@
           @drop="onDrop($event, index)"
           @dragover.prevent
           v-on="on"
+          data-type="sidebar-icon"
         >
           <v-icon
             class="icon-style pa-6"
@@ -170,6 +171,7 @@ let draggedItem = null;
 
 const startDrag = (event, item) => {
   draggedItem = item;
+  event.dataTransfer.setData("text/plain", "sidebar-icon");
 };
 
 const onDrop = (event, dropIndex) => {
