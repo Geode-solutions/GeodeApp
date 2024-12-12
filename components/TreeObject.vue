@@ -1,5 +1,14 @@
 <template>
-  <v-container>
+  <v-container
+    style="
+      position: absolute;
+      z-index: 2;
+      left: 0;
+      top: 0;
+      background-color: transparent;
+      border-radius: 16px;
+    "
+  >
     <v-row>
       <v-col cols="12" md="12">
         <v-treeview
@@ -27,9 +36,9 @@
 
 <script setup>
 import viewer_schemas from "@geode/opengeodeweb-viewer/schemas.json";
-const treeviewStore = useTreeviewStore();
 
-const { selection } = toRefs(treeviewStore);
+const treeviewStore = use_treeview_store();
+const { selection } = storeToRefs(treeviewStore);
 
 async function toggle_object_visibility(id, visibility) {
   await viewer_call({
